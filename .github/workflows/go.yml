@@ -22,7 +22,7 @@ jobs:
         architecture: x64
 
     - name: Build
-      run: go build -v ./... -o buddy-prometheus-exporter buddy-prometheus-exporter-amd64
+      run: go build -v ./...
 
     - name: Test
       run: go test -v ./...
@@ -40,7 +40,7 @@ jobs:
         architecture: arm64
 
     - name: Build
-      run: go build -v ./... -o buddy-prometheus-exporter buddy-prometheus-exporter-arm64
+      run: go build -v ./...
 
     - name: Test
       run: go test -v ./...
