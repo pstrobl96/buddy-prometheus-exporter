@@ -20,7 +20,7 @@ type buddyCollector struct {
 	printerMaterial           *prometheus.Desc
 }
 
-func newBuddyCollector() *buddyCollector {
+func NewBuddyCollector() *buddyCollector {
 	return &buddyCollector{
 		printerNozzleTemp: prometheus.NewDesc("prusa_buddy_nozzle_temperature",
 			"Current temperature of printer nozzle in Celsius",
@@ -100,10 +100,10 @@ func (collector *buddyCollector) Collect(ch chan<- prometheus.Metric) {
 	for _, s := range cfg.Printers.Buddy {
 		logger.Debug("Buddy scraping at " + s.Address)
 		if connTest("http://" + s.Address) {
-			printer := getBuddyPrinter(s.Address, s.Apikey, s.Username, s.Pass)
-			files := getBuddyFiles(s.Address, s.Apikey, s.Username, s.Pass)
-			version := getBuddyVersion(s.Address, s.Apikey, s.Username, s.Pass)
-			job := getBuddyJob(s.Address, s.Apikey, s.Username, s.Pass)
+			printer := GetBuddyPrinter(s.Address, s.Apikey, s.Username, s.Pass)
+			files := GetBuddyFiles(s.Address, s.Apikey, s.Username, s.Pass)
+			version := GetBuddyVersion(s.Address, s.Apikey, s.Username, s.Pass)
+			job := GetBuddyJob(s.Address, s.Apikey, s.Username, s.Pass)
 			bedTemp := prometheus.MustNewConstMetric(
 				collector.printerBedTemp, prometheus.GaugeValue,
 				float64(printer.Temperature.Bed.Actual),

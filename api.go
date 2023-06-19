@@ -1,7 +1,8 @@
 package main
 
 import (
-	"io/ioutil"
+	"fmt"
+	"io"
 	"net/http"
 	"time"
 
@@ -19,7 +20,7 @@ func connTest(s string) bool {
 }
 
 func getURL(path string, address string) string {
-	return string("http://" + address + "/api/" + path)
+	return fmt.Sprintf("http://%s/api/%s", address, path) // http is used in internal network only
 }
 
 func accessBuddyApi(path string, address string, apiKey string, username string, password string) []byte {
@@ -48,7 +49,7 @@ func accessBuddyApi(path string, address string, apiKey string, username string,
 		}
 	}
 	if err == nil {
-		body, err = ioutil.ReadAll(res.Body)
+		body, err = io.ReadAll(res.Body)
 		res.Body.Close()
 		if err != nil {
 			logger.Error(err.Error())
@@ -59,26 +60,6 @@ func accessBuddyApi(path string, address string, apiKey string, username string,
 
 	return body
 }
-
-/*func accessLegacyApi(path string, address string) ([]byte, error) {
-	url := getURL(path, address)
-	var res *http.Response
-	var err error
-	req, _ := http.NewRequest("GET", url, nil)
-	client := &http.Client{Timeout: time.Duration(scrapeTimeout) * time.Second}
-	res, err = client.Do(req)
-	if err != nil {
-		logger.Error(err.Error())
-		return nil, err
-	} else {
-		defer res.Body.Close()
-		body, err := ioutil.ReadAll(res.Body)
-		if err != nil {
-			logger.Error(err.Error())
-		}
-		return body, nil
-	}
-}*/
 
 func accessEinsyApi(path string, address string, apiKey string) ([]byte, error) {
 	url := getURL(path, address)
@@ -91,7 +72,7 @@ func accessEinsyApi(path string, address string, apiKey string) ([]byte, error) 
 		return nil, err
 	} else {
 		defer res.Body.Close()
-		body, err := ioutil.ReadAll(res.Body)
+		body, err := io.ReadAll(res.Body)
 		if err != nil {
 			logger.Error(err.Error())
 		}

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-func getEinsyJob(address string, apiKey string) einsyJob {
+func GetEinsyJob(address string, apiKey string) einsyJob {
 	resp, _ := accessEinsyApi("job", address, apiKey)
 
 	var result einsyJob
@@ -16,7 +16,7 @@ func getEinsyJob(address string, apiKey string) einsyJob {
 	return result
 }
 
-func getEinsyCameras(address string, apiKey string) einsyCameras {
+func GetEinsyCameras(address string, apiKey string) einsyCameras {
 	resp, _ := accessEinsyApi("v1/cameras", address, apiKey)
 
 	var result einsyCameras
@@ -28,7 +28,7 @@ func getEinsyCameras(address string, apiKey string) einsyCameras {
 	return result
 }
 
-func getEinsyPrinter(address string, apiKey string) einsyPrinter {
+func GetEinsyPrinter(address string, apiKey string) einsyPrinter {
 	resp, _ := accessEinsyApi("printer", address, apiKey)
 
 	var result einsyPrinter
@@ -40,7 +40,7 @@ func getEinsyPrinter(address string, apiKey string) einsyPrinter {
 	return result
 }
 
-func getEinsyStorage(address string, apiKey string) einsyStorage { // currently unused
+func GetEinsyStorage(address string, apiKey string) einsyStorage { // currently unused
 	resp, _ := accessEinsyApi("v1/storage", address, apiKey)
 
 	var result einsyStorage
@@ -52,7 +52,7 @@ func getEinsyStorage(address string, apiKey string) einsyStorage { // currently 
 	return result
 }
 
-func getEinsySettings(address string, apiKey string) einsySettings {
+func GetEinsySettings(address string, apiKey string) einsySettings {
 	resp, _ := accessEinsyApi("settings", address, apiKey)
 
 	var result einsySettings
@@ -64,7 +64,7 @@ func getEinsySettings(address string, apiKey string) einsySettings {
 	return result
 }
 
-func getEinsyConnection(address string, apiKey string) einsyConection { // currently unused
+func GetEinsyConnection(address string, apiKey string) einsyConection { // currently unused
 	resp, _ := accessEinsyApi("connection", address, apiKey)
 
 	var result einsyConection
@@ -76,7 +76,7 @@ func getEinsyConnection(address string, apiKey string) einsyConection { // curre
 	return result
 }
 
-func getEinsyFiles(address string, apiKey string) einsyFiles {
+func GetEinsyFiles(address string, apiKey string) einsyFiles {
 	resp, _ := accessEinsyApi("files", address, apiKey)
 
 	var result einsyFiles
@@ -88,7 +88,7 @@ func getEinsyFiles(address string, apiKey string) einsyFiles {
 	return result
 }
 
-func getEinsyLogs(address string, apiKey string) einsyLogs {
+func GetEinsyLogs(address string, apiKey string) einsyLogs {
 	resp, _ := accessEinsyApi("logs", address, apiKey)
 
 	var result einsyLogs
@@ -100,7 +100,7 @@ func getEinsyLogs(address string, apiKey string) einsyLogs {
 	return result
 }
 
-func getEinsyInfo(address string, apiKey string) einsyInfo {
+func GetEinsyInfo(address string, apiKey string) einsyInfo {
 	resp, _ := accessEinsyApi("v1/info", address, apiKey)
 
 	var result einsyInfo
@@ -112,7 +112,7 @@ func getEinsyInfo(address string, apiKey string) einsyInfo {
 	return result
 }
 
-func getEinsyStatus(address string, apiKey string) einsyStatus { // currently unused
+func GetEinsyStatus(address string, apiKey string) einsyStatus { // currently unused
 	resp, _ := accessEinsyApi("v1/status", address, apiKey)
 
 	var result einsyStatus
@@ -124,7 +124,7 @@ func getEinsyStatus(address string, apiKey string) einsyStatus { // currently un
 	return result
 }
 
-func getEinsyVersion(address string, apiKey string) einsyVersion {
+func GetEinsyVersion(address string, apiKey string) einsyVersion {
 	resp, _ := accessEinsyApi("version", address, apiKey)
 
 	var result einsyVersion
@@ -136,7 +136,7 @@ func getEinsyVersion(address string, apiKey string) einsyVersion {
 	return result
 }
 
-func getEinsyPorts(address string, apiKey string) einsyPorts {
+func GetEinsyPorts(address string, apiKey string) einsyPorts {
 	resp, _ := accessEinsyApi("ports", address, apiKey)
 
 	var result einsyPorts

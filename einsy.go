@@ -30,7 +30,7 @@ type einsyCollector struct {
 	printerNozzleSize         *prometheus.Desc
 }
 
-func newEinsyCollector() *einsyCollector {
+func NewEinsyCollector() *einsyCollector {
 	return &einsyCollector{
 		printerNozzleTemp:         prometheus.NewDesc("prusa_einsy_nozzle_temperature", "Current temperature of printer nozzle in Celsius", []string{"printer_address", "printer_model", "printer_name", "printer_job_name", "printer_job_path"}, nil),
 		printerBedTemp:            prometheus.NewDesc("prusa_einsy_bed_temperature", "Current temperature of printer bed in Celsius", []string{"printer_address", "printer_model", "printer_name", "printer_job_name", "printer_job_path"}, nil),
@@ -89,15 +89,15 @@ func (collector *einsyCollector) Collect(ch chan<- prometheus.Metric) {
 		logger.Debug("Einsy scraping at " + s.Address)
 		if head("http://" + s.Address) {
 
-			printer := getEinsyPrinter(s.Address, s.Apikey)
-			job := getEinsyJob(s.Address, s.Apikey)
-			version := getEinsyVersion(s.Address, s.Apikey)
-			files := getEinsyFiles(s.Address, s.Apikey)
-			cameras := getEinsyCameras(s.Address, s.Apikey)
-			info := getEinsyInfo(s.Address, s.Apikey)
-			logs := getEinsyLogs(s.Address, s.Apikey)
-			settings := getEinsySettings(s.Address, s.Apikey)
-			ports := getEinsyPorts(s.Address, s.Apikey)
+			printer := GetEinsyPrinter(s.Address, s.Apikey)
+			job := GetEinsyJob(s.Address, s.Apikey)
+			version := GetEinsyVersion(s.Address, s.Apikey)
+			files := GetEinsyFiles(s.Address, s.Apikey)
+			cameras := GetEinsyCameras(s.Address, s.Apikey)
+			info := GetEinsyInfo(s.Address, s.Apikey)
+			logs := GetEinsyLogs(s.Address, s.Apikey)
+			settings := GetEinsySettings(s.Address, s.Apikey)
+			ports := GetEinsyPorts(s.Address, s.Apikey)
 
 			nozzleTemp := prometheus.MustNewConstMetric(
 				collector.printerNozzleTemp, prometheus.GaugeValue,

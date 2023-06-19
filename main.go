@@ -13,10 +13,9 @@ func main() {
 	logger = slog.New(slog.NewTextHandler(os.Stdout))
 	logger.Info("Buddy Link Prometheus exporter starting")
 	loadEnvVars()
-	buddyCollector := newBuddyCollector()
-	//legacyCollector := newLegacyCollector()
-	einsyCollector := newEinsyCollector()
-	prometheus.MustRegister(buddyCollector, /*legacyCollector,*/ einsyCollector)
+	buddyCollector := NewBuddyCollector()
+	einsyCollector := NewEinsyCollector()
+	prometheus.MustRegister(buddyCollector, einsyCollector)
 
 	logger.Info("Metrics registered")
 	http.Handle("/metrics", promhttp.Handler())

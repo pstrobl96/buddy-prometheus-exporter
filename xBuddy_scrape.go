@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-func getBuddyVersion(address string, apiKey string, username string, password string) buddyVersion {
+func GetBuddyVersion(address string, apiKey string, username string, password string) buddyVersion {
 	resp := accessBuddyApi("version", address, apiKey, username, password)
 
 	var result buddyVersion
@@ -16,7 +16,7 @@ func getBuddyVersion(address string, apiKey string, username string, password st
 	return result
 }
 
-func getBuddyFiles(address string, apiKey string, username string, password string) buddyFiles {
+func GetBuddyFiles(address string, apiKey string, username string, password string) buddyFiles {
 	resp := accessBuddyApi("files", address, apiKey, username, password)
 
 	var result buddyFiles
@@ -28,7 +28,7 @@ func getBuddyFiles(address string, apiKey string, username string, password stri
 	return result
 }
 
-func getBuddyJob(address string, apiKey string, username string, password string) buddyJob {
+func GetBuddyJob(address string, apiKey string, username string, password string) buddyJob {
 	resp := accessBuddyApi("job", address, apiKey, username, password)
 
 	var result buddyJob
@@ -40,7 +40,7 @@ func getBuddyJob(address string, apiKey string, username string, password string
 	return result
 }
 
-func getBuddyPrinter(address string, apiKey string, username string, password string) buddyPrinter {
+func GetBuddyPrinter(address string, apiKey string, username string, password string) buddyPrinter {
 	resp := accessBuddyApi("printer", address, apiKey, username, password)
 
 	var result buddyPrinter
