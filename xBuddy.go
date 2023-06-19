@@ -106,17 +106,17 @@ func (collector *buddyCollector) Collect(ch chan<- prometheus.Metric) {
 			job := GetBuddyJob(s.Address, s.Apikey, s.Username, s.Pass)
 			bedTemp := prometheus.MustNewConstMetric(
 				collector.printerBedTemp, prometheus.GaugeValue,
-				float64(printer.Temperature.Bed.Actual),
+				printer.Temperature.Bed.Actual,
 				s.Address, s.Type, s.Name, job.Job.File.Name, job.Job.File.Path)
 
 			nozzleTemp := prometheus.MustNewConstMetric(
 				collector.printerNozzleTemp, prometheus.GaugeValue,
-				float64(printer.Temperature.Tool0.Actual),
+				printer.Temperature.Tool0.Actual,
 				s.Address, s.Type, s.Name, job.Job.File.Name, job.Job.File.Path)
 
 			printProgress := prometheus.MustNewConstMetric(
 				collector.printerPrintProgress, prometheus.GaugeValue,
-				float64(job.Progress.Completion),
+				job.Progress.Completion,
 				s.Address, s.Type, s.Name, job.Job.File.Name, job.Job.File.Path)
 
 			printSpeed := prometheus.MustNewConstMetric(
@@ -146,12 +146,12 @@ func (collector *buddyCollector) Collect(ch chan<- prometheus.Metric) {
 
 			targetTempBed := prometheus.MustNewConstMetric(
 				collector.printerTargetTempBed, prometheus.GaugeValue,
-				float64(printer.Temperature.Bed.Target),
+				printer.Temperature.Bed.Target,
 				s.Address, s.Type, s.Name, job.Job.File.Name, job.Job.File.Path)
 
 			targetTempNozzle := prometheus.MustNewConstMetric(
 				collector.printerTargetTempNozzle, prometheus.GaugeValue,
-				float64(printer.Temperature.Tool0.Target),
+				printer.Temperature.Tool0.Target,
 				s.Address, s.Type, s.Name, job.Job.File.Name, job.Job.File.Path)
 
 			filamentLoaded := 0
